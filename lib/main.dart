@@ -1,92 +1,47 @@
+import 'package:login/home_page.dart';
+import 'package:login/registro.dart';
+import 'package:login/inicio.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp( MyApp());
+void main() => runApp(const MyApp());
 
-class MyApp extends StatefulWidget {
-  MyApp({super.key});
-  bool visible = false;
-
-  //agregar un set y un get a la variable
-  bool get() {
-  return visible;
-  }
-  void set(bool value)
-  {
-    visible = value;
-  }
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-   
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      title: 'Login',
+      // home: HomePage(),
+      initialRoute: 'home', //esta es la ruta principal
+      routes: {
+        'home': (context) =>  HomePage(),
+        'registro': (context) =>  Registro(),
+        'inicio' : (context) => const Inicio()
+      },
+      onGenerateRoute: (RouteSettings settings) {
         
-        appBar: AppBar(
-          title: const Text(''),
-        ),
-        body:   Padding(
-          padding: const EdgeInsets.all(15),
-          child: SingleChildScrollView(
-            
-            child:  Column
-            (
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-
-                 Column(
-                  children: [
-                    const Text('Inicio de sesion', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                    const SizedBox(height: 40,),
-                    const TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Correo electronico',
-                      ),
-                      
-                    ),
-                    const SizedBox(height: 20,),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: const  OutlineInputBorder(),
-                        labelText: 'Contraseña',
-                        suffix: InkResponse(
-                          onTap: (){
-                            setState(() {
-                              widget.visible = !widget.visible;
-                            }
-                            );
-                            
-                          },
-                          splashColor: const Color.fromARGB(255, 204, 148, 214),
-                          child: const Icon(Icons.visibility),
-                        ),
-                      ),
-                      obscureText: widget.visible,
-                      
-                    ),
-                    const SizedBox(height: 50,),
-                  ],
-                ),
-                ElevatedButton(
-                  
-                  onPressed: (){},
-                  child: const Text('Iniciar sesion'),
-                ),
-                
-              ],
-            
-            ),
-          ),
-        ),
-      ),
+        return MaterialPageRoute(
+          builder: (context) => PageNotFound(ruta: settings.name),
+        );
+      },
     );
+  }
+}
+
+class PageNotFound extends StatelessWidget {
+  const PageNotFound({
+    super.key,
+    this.ruta = 'No-found',
+  });
+
+  final String? ruta;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(),
+        body: Center(child: Text('La ruta "$ruta" no existe')));
   }
 }
