@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Custom_Input extends StatelessWidget {
-  const Custom_Input({
+class Customimput extends StatelessWidget {
+  const Customimput({
     super.key,
     required this.controller,
     required this.label,
@@ -20,6 +20,7 @@ class Custom_Input extends StatelessWidget {
   final String? errorText;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+
   final TextEditingController controller;
 
   @override
@@ -31,12 +32,22 @@ class Custom_Input extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: 'Ingrese su $label',
+        // prefix: Icon(Icons.person),
+        // error: Icon(Icons.error),
+        // errorText: errorText,
+        //? InkResponse, Inkwel, GestureDetector => proporcionan interactividad con
+        //? cualquier widget que no tenga posibilidad de detectar eventos
         suffix: InkResponse(
           splashColor: Colors.teal[50],
+          // muestra un efecto de Ripple
           onTap: () {
             print('Mostrar contraseña');
           },
+          child: const Icon(
+            Icons.info,
+          ),
         ),
+        //  como hago para darle funcionalidad?
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -44,6 +55,7 @@ class Custom_Input extends StatelessWidget {
         label: Text(label),
       ),
       maxLength: maxLength,
+      // maxLines: 3, // Textarea
     );
   }
 }
