@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       // home: HomePage(),
       initialRoute: 'home', //esta es la ruta principal
       routes: {
-        'home': (context) =>  HomePage(),
+        'home': (context) => const HomePage(),
         'registro': (context) =>  Registro(),
         'inicio' : (context) => const Inicio()
       },

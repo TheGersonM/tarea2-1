@@ -1,4 +1,4 @@
-import 'package:login/custom_imputs.dart';
+import 'package:login/Custom_Imputs.dart';
 import 'package:flutter/material.dart';
 
 class Registro extends StatelessWidget {
@@ -7,7 +7,6 @@ class Registro extends StatelessWidget {
   final TextEditingController nombreController = TextEditingController();
   final TextEditingController correoController = TextEditingController();
   final TextEditingController telefonoController = TextEditingController();
-  final TextEditingController usuarioController = TextEditingController();
   final TextEditingController contraseniaController = TextEditingController();
 
   // equivalente al controller del formulario
@@ -105,7 +104,6 @@ class Registro extends StatelessWidget {
               'nombre': nombreController.text,
               'correo': correoController.text,
               'telefono': telefonoController.text,
-              'usuario': usuarioController.text,
               'contrasenia': contraseniaController.text,
             };
 

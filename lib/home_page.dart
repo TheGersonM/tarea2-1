@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
- HomePage({
+  const HomePage({
     super.key,
   });
-  bool visible=false;
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                         suffix: InkResponse(
                           onTap: (){
                             setState(() {
-                              widget.visible = !widget.visible;
+                              //widget.visible = !widget.visible;
                             }
                             );
                             
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                           child: const Icon(Icons.visibility),
                         ),
                       ),
-                      obscureText: widget.visible,
+                      //obscureText: widget.visible,
                       
                     ),
                     const SizedBox(height: 50,),

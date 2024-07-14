@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CuntomInput extends StatelessWidget {
-  const CuntomInput({
+class Custom_Input extends StatelessWidget {
+  const Custom_Input({
     super.key,
     required this.controller,
     required this.label,
@@ -10,8 +10,6 @@ class CuntomInput extends StatelessWidget {
     this.maxLength = 20,
     this.errorText,
     this.keyboardType = TextInputType.text,
-    this.iconSuffix = Icons.abc,
-
     required this.validator,
   });
 
@@ -23,7 +21,6 @@ class CuntomInput extends StatelessWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final TextEditingController controller;
-  final IconData iconSuffix;
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +33,10 @@ class CuntomInput extends StatelessWidget {
         hintText: 'Ingrese su $label',
         suffix: InkResponse(
           splashColor: Colors.teal[50],
-          // muestra un efecto de Ripple
           onTap: () {
             print('Mostrar contraseña');
           },
         ),
-        //  como hago para darle funcionalidad?
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -49,7 +44,6 @@ class CuntomInput extends StatelessWidget {
         label: Text(label),
       ),
       maxLength: maxLength,
-      // maxLines: 3, // Textarea
     );
   }
 }
